@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ray-java
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ray-java
+  template:
+    metadata:
+      labels:
+        app: ray-java
+    spec:
+      containers:
+        - name: ray-java
+          image: europe-west4-docker.pkg.dev/ai-on-gke-abdel/ray-java/ray-java:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ray-java
+spec:
+  selector:
+    app: ray-java
+  ports:
+    - port: 80
+      targetPort: 8080
