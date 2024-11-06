@@ -17,6 +17,9 @@ spec:
           image: europe-west4-docker.pkg.dev/ai-on-gke-abdel/ray-java/ray-java:latest
           ports:
             - containerPort: 8080
+          env:
+          - name: "RAY_VLLM_URL"
+            value: "gemma-2b-it-serve-svc.default.svc.cluster.local"
 ---
 apiVersion: v1
 kind: Service
