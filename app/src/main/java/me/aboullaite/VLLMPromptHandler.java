@@ -24,12 +24,9 @@ public class VLLMPromptHandler {
   }
 
   public String complete(String prompt) throws Exception {
-    Map<String, Object> requestBody = new HashMap<>();
-    requestBody.put("prompt", prompt);
-    requestBody.put("max_tokens", 512);
-    requestBody.put("temperature", 0.7);
+    VLLMRequest vllmRequest = new VLLMRequest(prompt, 512, 0.7);
 
-    String jsonBody = mapper.writeValueAsString(requestBody);
+    String jsonBody = mapper.writeValueAsString(vllmRequest);
 
     Request request = new Request.Builder()
         .url(baseUrl)
@@ -41,11 +38,8 @@ public class VLLMPromptHandler {
         throw new RuntimeException("vLLM API call failed: " + response.code());
       }
 
-      Map<String, Object> responseMap = mapper.readValue(
-          response.body().string(),
-          Map.class
-      );
-      return responseMap.get("text").toString();
+      VLLMResponse vllmResponse = mapper.readValue(response.body().string(), VLLMResponse.class);
+      return String.join("", vllmResponse.text());
     }
   }
 }
