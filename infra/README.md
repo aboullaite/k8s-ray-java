@@ -36,7 +36,7 @@ Clone the sample code repository from GitHub:
 
 ```shell (TODO: Fix me)
 git clone https://github.com/aboullaite/k8s-ray-java.git
-cd infra/llm-fine-tuning-gemma
+cd infra/llm-gemma
 ```
 
 # Create and configure Google Cloud Resources.

@@ -28,10 +28,10 @@ spec:
       terminationGracePeriodSeconds: 600
       containers:
       - name: finetuner
-        image: $IMAGE_URL
+        image: us-docker.pkg.dev/jfall24ede-7500/gemma/finetune-gemma-gpu:1.0.0
         resources:
           limits:
-            nvidia.com/gpu: "8"
+            nvidia.com/gpu: "4"
         env:
         - name: MODEL_NAME
           value: "google/gemma-2b"
