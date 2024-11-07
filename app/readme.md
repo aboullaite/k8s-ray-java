@@ -18,17 +18,6 @@ Use the webpreview button (top right corner in the cloud shell) to open `http://
 ## Setup gcloud CLI credential helper
 The gcloud CLI credential helper provides secure, short-lived access to your project resources. It configures Docker to authenticate to Artifact Registry hosts in any environment where the Google Cloud CLI is installed. 
 
-1. To authenticate to Artifact Registry:
-
-Then run the following command to configure Docker to use the gcloud CLI as a credential helper:
-
-```bash
-$ gcloud auth configure-docker $HOSTNAME-LIST
-```
-Where `$HOSTNAME-LIST` is a comma-separated list of repository hostnames to add to the credential helper configuration.
-
-For example, to add the regions us-west1 and asia-northeast1, run the command:
-
 ```bash
 $ gcloud auth configure-docker us-docker.pkg.dev
 ```
@@ -50,6 +39,7 @@ Open the `application.properties` file and replace `$PROJECT_ID` with your proje
 ```bash
 $ mvn clean verify -Dquarkus.container-image.push=true
 ```
+Open the `k8s/java-ray-k8s.yaml` file and replace `$PROJECT_ID` with your project id.
 
 Then, apply the Kubernetes manifest:
 ```bash
