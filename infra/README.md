@@ -65,7 +65,7 @@ gcloud container clusters create ${CLUSTER_NAME} \
 
 ```shell
 gcloud container node-pools create gpupool \
-  --accelerator type=nvidia-l4,count=8 \
+  --accelerator type=nvidia-l4,count=4 \
   --project=${PROJECT_ID} \
   --location=${REGION} \
   --node-locations=${REGION}-b \
@@ -215,6 +215,11 @@ EOF
 
 Depending on your query, you might have to change the max_token to get a better result.
 
+## Clean up
+
+```shell
+kubectl delete -f vllm-deployment.yaml
+```
 ## Serving with Ray
 
 Open the ray-service.yaml file and explore the object. Notice that instead of a Kubernetes Deployment and a Service. We are using a RayService this time

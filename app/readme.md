@@ -9,9 +9,9 @@ $ mvn compile quarkus:dev
 The application is expecting Ray (vLLM) endpoint to be running on `http://localhost:8000`. You can change the endpoint in the `application.properties` file.
 In this first step, we are going to port forward the Ray endpoint to our local machine. To do that, run the following command:
 ```bash
-$ kubectl port-forward svc/gemma-2b-it-serve-svc 8000:8000
+$ kubectl port-forward svc/gemma-2b-finetuned-serve-svc 8000:8000
 ```
-Head to the `http://localhost:8080` to test the app.
+Use the webpreview button (top right corner in the cloud shell) to open `http://localhost:8080` to test the app. You will need to change the port to 8080
 
 # Deploying the app on GKE
 
@@ -19,12 +19,6 @@ Head to the `http://localhost:8080` to test the app.
 The gcloud CLI credential helper provides secure, short-lived access to your project resources. It configures Docker to authenticate to Artifact Registry hosts in any environment where the Google Cloud CLI is installed. 
 
 1. To authenticate to Artifact Registry:
-
-Sign in to gcloud CLI as the user that will run Docker commands. 
-
-```bash
-$ gcloud auth login
-```
 
 Then run the following command to configure Docker to use the gcloud CLI as a credential helper:
 
@@ -36,16 +30,8 @@ Where `$HOSTNAME-LIST` is a comma-separated list of repository hostnames to add 
 For example, to add the regions us-west1 and asia-northeast1, run the command:
 
 ```bash
-$ gcloud auth configure-docker europe-west4-docker.pkg.dev
+$ gcloud auth configure-docker us-docker.pkg.dev
 ```
-The specified hostnames are added to the credential helper configuration. You can add other hostnames to the configuration later by running the command again.
-
-To view a list of supported repository locations, run the command:
-```bash
-$ gcloud artifacts locations list
-```
-
-The command displays the `credHelpers` section of your current Docker configuration and the updated configuration after adding the specified hostnames.
 
 To accept the configuration changes, enter y.
 
@@ -58,6 +44,9 @@ Docker requires credential helpers to be in the system `PATH`. Ensure that the `
 ## Generating and pushing Docker image to registry
 We will use quarkus container image to generate and push our Container image to Google Artifact registry. Quarkus container image extension uses JIB under the hood to build and push the image to the registry. 
 To build and push the image, run the following command:
+
+Open the `application.properties` file and replace `$PROJECT_ID` with your project id.
+
 ```bash
 $ mvn clean verify -Dquarkus.container-image.push=true
 ```
