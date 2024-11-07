@@ -43,10 +43,11 @@ Open the `k8s/java-ray-k8s.yaml` file and replace `$PROJECT_ID` with your projec
 
 Then, apply the Kubernetes manifest:
 ```bash
-$ kubectl apply -f quarkus-langchain4j.yaml
+$ kubectl apply -f k8s/java-ray-k8s.yaml
 ```
-The final step is to test the Deployment. You'd need to get the external IP address of the Quarkus LangChain4j service:
+The final step is to test the Deployment. Execute:
 ```bash
-$ kubectl get service quarkus-langchain4j
+$ kubectl get service -w
 ```
-Access the application in your web browser using the external IP address.
+
+Wait for the loadbalancer called `ray-java` to have an external IP. Access the application in your web browser using the external IP address.
