@@ -4,10 +4,6 @@ This guide demonstrates how to fine-tune large language models (LLM) using the H
 
 In this guide we will fine-tune a Gemma2 base model using a HuggingFace Dataset and Serve it two ways. One with the vLLM container and a second way with Ray.
 
-# Before you begin
-
-## (Start here) Get access to the model
-
 ## Prepare your environment
 
 1. In the Google Cloud console, launch a Cloud Shell session by clicking the Activate Cloud Shell in the Google Cloud console (top-right corner). This launches a session in the bottom pane of Google Cloud console.
