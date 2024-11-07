@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< Updated upstream
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-=======
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
->>>>>>> Stashed changes
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>me.aboullaite</groupId>
@@ -16,13 +10,10 @@
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<<<<<<< Updated upstream
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
     <quarkus.platform.version>3.16.1</quarkus.platform.version>
     <okhttp3.vesion>4.12.0</okhttp3.vesion>
-=======
->>>>>>> Stashed changes
     <langchain4j.version>0.24.0</langchain4j.version>
     <okhttp3.vesion>4.12.0</okhttp3.vesion>
     <jackson.version>2.17.2</jackson.version>
@@ -30,14 +21,8 @@
 
   <dependencies>
     <dependency>
-<<<<<<< Updated upstream
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-rest-jackson</artifactId>
-=======
-      <groupId>dev.langchain4j</groupId>
-      <artifactId>langchain4j</artifactId>
-      <version>${langchain4j.version}</version>
->>>>>>> Stashed changes
     </dependency>
     <dependency>
       <groupId>com.squareup.okhttp3</groupId>
@@ -49,7 +34,6 @@
       <artifactId>jackson-databind</artifactId>
       <version>${jackson.version}</version>
     </dependency>
-<<<<<<< Updated upstream
     <dependency>
       <groupId>dev.langchain4j</groupId>
       <artifactId>langchain4j</artifactId>
@@ -92,9 +76,3 @@
     </plugins>
   </build>
 </project>
-=======
-
-  </dependencies>
-
-</project>
->>>>>>> Stashed changes

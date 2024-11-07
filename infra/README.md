@@ -163,7 +163,7 @@ sed -i "s|google/gemma-2b|$MODEL_ID|g" vllm-deployment.yaml
 ### Apply the manifest
 
 ```shell
-kubectl apply -f serve-gemma.yaml
+kubectl apply -f vllm-deployment.yaml
 ```
 
 ### Monitor the deployment
@@ -193,7 +193,7 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 Once the model is running you can connect to it using the kubectl port-forward command
 
 ```shell
-Forwarding from 127.0.0.1:8000 -> 8000
+kubectl port-forward service/llm-service 8000:8000
 ```
 
 Leave the tab open and open a new one to query the model
