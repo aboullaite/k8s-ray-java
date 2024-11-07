@@ -33,7 +33,7 @@ spec:
         working_dir: "https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/archive/main.zip"
         pip: ["vllm==0.4.3"]
         env_vars:
-          MODEL_ID: "google/gemma-2b-it"
+          MODEL_ID: "boredabdel/gemma-2b-sql-finetuned"
           TENSOR_PARALLELISM: "1"
   rayClusterConfig:
     headGroupSpec:
@@ -51,9 +51,11 @@ spec:
               limits:
                 cpu: "2"
                 memory: "8Gi"
+                nvidia.com/gpu: "1"
               requests:
                 cpu: "2"
                 memory: "8Gi"
+                nvidia.com/gpu: "1"
             ports:
             - containerPort: 6379
               name: gcs-server
@@ -68,7 +70,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: hf-secret
-                  key: hf_api_token              
+                  key: hf_api_token
     workerGroupSpecs:
     - replicas: 1
       minReplicas: 0
